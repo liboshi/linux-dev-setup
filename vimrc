@@ -5,9 +5,9 @@ set nocompatible
 syntax enable
 
 filetype on
+filetype plugin indent on
 autocmd FileType c set ts=8 sw=8 sts=8
 autocmd FileType python set ts=4 sw=4 sts=4
-filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
