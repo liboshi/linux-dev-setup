@@ -4,7 +4,9 @@ set nocompatible
 " enable syntax highlighting
 syntax enable
 
-filetype on
+filetype off
+filetype plugin indent off
+set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
 autocmd FileType c set ts=8 sw=8 sts=8
 autocmd FileType python set ts=4 sw=4 sts=4
@@ -65,6 +67,18 @@ noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo '
 let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:NERDSpaceDelims=1
 let g:gitgutter_enabled = 0
+
+" use goimports for formatting
+let g:go_fmt_command = "goimports"
+
+" turn highlighting on
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
 
 " md is markdown
 autocmd BufRead,BufNewFile *.md set filetype=markdown
