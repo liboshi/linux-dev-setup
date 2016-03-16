@@ -10,6 +10,8 @@ set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
 autocmd FileType c set ts=8 sw=8 sts=8
 autocmd FileType python set ts=4 sw=4 sts=4
+" for golang
+setlocal omnifunc=go#complete#Complete
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
