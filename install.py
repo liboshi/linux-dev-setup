@@ -18,12 +18,16 @@ def make_vim_plugin_folder():
     if not os.path.exists(vim_plugin_folder):
         os.makedirs(vim_plugin_folder)
     else:
-        log.info('Plugin folder exists...')
+        log.info('>>> Plugin folder exists...')
 
 def install_github_bundle(user, package):
     if not os.path.exists(os.path.expanduser("~/.vim/bundle/{}".format(package))):
         subprocess.call(r'git clone https://github.com/{}/{}'.format(user, package),
                         shell = True)
+
+def install_tmux():
+    log.info('>>> Install tmux')
+    subprocess.call(r'sudo apt-get install tmux', shell = True)
 
 def link_file(original_filename, symlink_filename):
     original_path = os.path.expanduser(original_filename)
@@ -37,7 +41,8 @@ LINKED_FILE = {
         'vimrc.bundles': r'.vimrc.bundles'}
 
 def main():
-    log.info('Start...')
+    log.info('>>> Start...')
+    install_tmux()
     install_github_bundle('VundleVim', 'Vundle.vim')
     for k, v in LINKED_FILE.iteritems():
         link_file(k, v)
