@@ -38,7 +38,8 @@ def link_file(original_filename, symlink_filename):
 
 LINKED_FILE = {
         'vimrc':         r'~/.vimrc',
-        'vimrc.bundles': r'.vimrc.bundles'}
+        'vimrc.bundles': r'~/.vimrc.bundles',
+        'tmux.conf':     r'~/.tmux.conf'}
 
 def main():
     log.info('>>> Start...')
