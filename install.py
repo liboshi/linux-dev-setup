@@ -27,7 +27,7 @@ def install_github_bundle(user, package):
 
 def install_tmux():
     log.info('>>> Install tmux')
-    subprocess.call(r'sudo apt-get install tmux', shell = True)
+    subprocess.call(r'sudo apt-get install -y tmux', shell = True)
 
 def link_file(original_filename, symlink_filename):
     original_path = os.path.expanduser(original_filename)
