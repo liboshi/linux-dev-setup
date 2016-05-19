@@ -3,7 +3,7 @@
 '''
 TODO:
     o Add one process to clone linux-dev-setup, this is just used by myself.
-    o Install vim plugins after install Vundle.vim automatically.
+    o FIXED: Install vim plugins after install Vundle.vim automatically.
 '''
 
 import os
@@ -48,6 +48,10 @@ def install_tmux():
         pkg_cmd = 'yum'
     subprocess.call(r'sudo {0} install -y tmux'.format(pkg_cmd), shell = True)
 
+def install_vim_plugins():
+    log.info('>>> Install vim plugins')
+    subprocess.call(r'vim +PluginInstall +qall', shell = True)
+
 def link_file(original_filename, symlink_filename):
     original_path = os.path.join(os.getcwd(), original_filename)
     symlink_path  = os.path.expanduser(symlink_filename)
@@ -67,9 +71,7 @@ def main():
     for k, v in LINKED_FILE.iteritems():
         link_file(k, v)
     # Install vim plugins
-    print('''>>> Install vim plugins:
-    Please start vim and then run following commands:
-    ":PluginInstall"''')
+    install_vim_plugins()
 
 if __name__ == '__main__':
     main()
