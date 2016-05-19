@@ -36,7 +36,7 @@ def install_github_bundle(user, package):
     dest_clone_path = os.path.expanduser(r'~/.vim/bundle/{0}'.format(package))
     if not os.path.exists(os.path.expanduser("~/.vim/bundle/{0}".format(package))):
         subprocess.call(r'git clone \
-                          https://github.com/{0}/{1} \
+                          https://github.com/{0}/{1}.git \
                           {2}'.format(user, package, dest_clone_path),
                         shell = True)
 
@@ -63,7 +63,7 @@ LINKED_FILE = {
 def main():
     log.info('>>> Start...')
     install_tmux()
-    install_github_bundle('VundleVim', 'Vundle.vim.git')
+    install_github_bundle('VundleVim', 'Vundle.vim')
     for k, v in LINKED_FILE.iteritems():
         link_file(k, v)
     # Install vim plugins
