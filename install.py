@@ -17,7 +17,7 @@ log = logging.getLogger(__name__)
 
 def which_dist():
     dist_name = platform.dist()[0]
-    if re.search(r'Ubuntu|debian'):
+    if re.search(r'Ubuntu|debian', dist_name):
         return 'debian'
     else:
         return 'redhat'
