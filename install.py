@@ -33,7 +33,7 @@ def make_vim_plugin_folder():
         log.info('>>> Plugin folder exists...')
 
 def install_github_bundle(user, package):
-    dest_clone_path = os.path.expanduser(r'~/.vim/{0}'.format(package))
+    dest_clone_path = os.path.expanduser(r'~/.vim/bundle/{0}'.format(package))
     if not os.path.exists(os.path.expanduser("~/.vim/bundle/{0}".format(package))):
         subprocess.call(r'git clone \
                           https://github.com/{0}/{1} \
