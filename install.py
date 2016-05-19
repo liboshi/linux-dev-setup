@@ -21,8 +21,8 @@ def make_vim_plugin_folder():
         log.info('>>> Plugin folder exists...')
 
 def install_github_bundle(user, package):
-    if not os.path.exists(os.path.expanduser("~/.vim/bundle/{}".format(package))):
-        subprocess.call(r'git clone https://github.com/{}/{}'.format(user, package),
+    if not os.path.exists(os.path.expanduser("~/.vim/bundle/{0}".format(package))):
+        subprocess.call(r'git clone https://github.com/{0}/{1}'.format(user, package),
                         shell = True)
 
 def install_tmux():
