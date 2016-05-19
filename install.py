@@ -37,7 +37,7 @@ def install_github_bundle(user, package):
     if not os.path.exists(os.path.expanduser("~/.vim/bundle/{0}".format(package))):
         subprocess.call(r'git clone \
                           https://github.com/{0}/{1} \
-                          dest_clone_path'.format(user, package),
+                          {2}'.format(user, package, dest_clone_path),
                         shell = True)
 
 def install_tmux():
@@ -69,7 +69,7 @@ def main():
     # Install vim plugins
     print('''>>> Install vim plugins:
     Please start vim and then run following commands:
-      ":PluginInstall"''')
+    ":PluginInstall"''')
 
 if __name__ == '__main__':
     main()
