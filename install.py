@@ -44,7 +44,7 @@ LINKED_FILE = {
 def main():
     log.info('>>> Start...')
     install_tmux()
-    install_github_bundle('VundleVim', 'Vundle.vim')
+    install_github_bundle('VundleVim', 'Vundle.vim.git')
     for k, v in LINKED_FILE.iteritems():
         link_file(k, v)
     # Install vim plugins
