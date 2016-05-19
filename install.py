@@ -22,6 +22,13 @@ def which_dist():
     else:
         return 'redhat'
 
+def get_pkg_cmd():
+    pkg_cmd = 'apt-get'
+    dist_name = which_dist()
+    if dist_name != 'debian':
+        pkg_cmd = 'yum'
+    return pkg_cmd
+
 def make_vim_plugin_folder():
     vim_plugin_folder = os.path.expanduser(r'~/.vim/bundle')
     if not os.path.exists(vim_plugin_folder):
@@ -40,13 +47,10 @@ def install_github_bundle(user, package):
                           {2}'.format(user, package, dest_clone_path),
                         shell = True)
 
-def install_tmux():
-    log.info('>>> Install tmux')
-    pkg_cmd = 'apt-get'
-    dist_name = which_dist()
-    if dist_name != 'debian':
-        pkg_cmd = 'yum'
-    subprocess.call(r'sudo {0} install -y tmux'.format(pkg_cmd), shell = True)
+def install_app(pkg_cmd, app_name):
+    log.info('>>> Install {0}'.format(app_name))
+    subprocess.call(r'sudo {0} install -y {1}'.format(pkg_cmd, app_name),
+                    shell = True)
 
 def install_vim_plugins():
     log.info('>>> Install vim plugins')
@@ -66,7 +70,9 @@ LINKED_FILE = {
 
 def main():
     log.info('>>> Start...')
-    install_tmux()
+    pkg_cmd = get_pkg_cmd()
+    install_app(pkg_cmd, 'tmux')
+    install_app(pkg_cmd, 'cmake')
     install_github_bundle('VundleVim', 'Vundle.vim')
     for k, v in LINKED_FILE.iteritems():
         link_file(k, v)
