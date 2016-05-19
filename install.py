@@ -47,6 +47,10 @@ def main():
     install_github_bundle('VundleVim', 'Vundle.vim')
     for k, v in LINKED_FILE.iteritems():
         link_file(k, v)
+    # Install vim plugins
+    print('''>>> Install vim plugins:
+    Please start vim and then run following commands:
+      ":PluginInstall"''')
 
 if __name__ == '__main__':
     main()
