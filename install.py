@@ -46,8 +46,7 @@ def install_tmux():
     subprocess.call(r'sudo {0} install -y tmux'.format(pkg_cmd), shell = True)
 
 def link_file(original_filename, symlink_filename):
-    original_path = os.path.expanduser(original_filename)
-    original_path = os.path.join(os.getcwd, original_path)
+    original_path = os.path.join(os.getcwd, original_filename)
     symlink_path  = os.path.expanduser(symlink_filename)
     if os.path.exists(symlink_path):
         os.unlink(symlink_path)
