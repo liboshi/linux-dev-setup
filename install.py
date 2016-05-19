@@ -3,7 +3,7 @@
 '''
 TODO:
     o Add one process to clone linux-dev-setup, this is just used by myself.
-    o FIXED: Install vim plugins after install Vundle.vim.
+    o Install vim plugins after install Vundle.vim automatically.
 '''
 
 import os
