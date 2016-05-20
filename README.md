@@ -10,8 +10,8 @@
 ## Installation
 * Clone this project to your local machine.
   `git clone https://github.com/liboshi/linux-dev-setup.git`
-* Run the main.py
-  `python main.py`
+* Run the startup
+  `./startup`
 
 ## Notes
 * Testing done on Ubuntu.
