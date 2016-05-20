@@ -19,7 +19,7 @@ import subprocess
 
 from optparse import OptionParser
 
-from .cli.formatter import Formatter
+from .formatter import Formatter
 
 # Get commandline arguments
 parser = OptionParser()
@@ -116,6 +116,3 @@ def main():
         link_file(k, v)
     # Install vim plugins
     install_vim_plugins()
-
-if __name__ == '__main__':
-    main()
