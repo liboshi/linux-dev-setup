@@ -34,9 +34,10 @@ console_handler = logging.StreamHandler(sys.stderr)
 
 # Configuration files definitions
 LINKED_FILE = {
-        'vimrc':         r'~/.vimrc',
-        'vimrc.bundles': r'~/.vimrc.bundles',
-        'tmux.conf':     r'~/.tmux.conf'}
+        'vimrc':           r'~/.vimrc',
+        'vimrc.bundles':   r'~/.vimrc.bundles',
+        'tmux.conf':       r'~/.tmux.conf',
+        'tmux.conf.local': r'~/.tmux.conf.local'}
 
 def setup_logging():
     root_logger = logging.getLogger()
