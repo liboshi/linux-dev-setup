@@ -6,6 +6,10 @@ TODO:
     o FIXED: Install vim plugins after install Vundle.vim automatically.
 '''
 
+from __future__ import absolute_import
+from __future__ import print_function
+from __future__ import unicode_literals
+
 import os
 import re
 import sys
@@ -13,7 +17,44 @@ import platform
 import logging
 import subprocess
 
+from optparse import OptionParser
+
+from .cli.formatter import Formatter
+
+# Get commandline arguments
+parser = OptionParser()
+parser.add_option('-v', '--verbose', dest='verbose',
+                  help = 'Argument for logging output')
+(options, args) = parser.parse_args()
+
 log = logging.getLogger(__name__)
+console_handler = logging.StreamHandler(sys.stderr)
+
+# Configuration files definitions
+LINKED_FILE = {
+        'vimrc':         r'~/.vimrc',
+        'vimrc.bundles': r'~/.vimrc.bundles',
+        'tmux.conf':     r'~/.tmux.conf'}
+
+def setup_logging():
+    root_logger = logging.getLogger()
+    root_logger.addHandler(console_handler)
+    root_logger.setLevel(logging.DEBUG)
+
+    # Disable requests logging
+    logging.getLogger('requests').propagate = False
+
+def setup_console_handler(handler, verbose):
+    if handler.stream.isatty():
+        format_class = ConsoleWarningFormatter
+    else:
+        format_class = logging.Formatter
+
+    if verbose:
+        handler.setFormatter(format_closs('%(name)s.%(funcName)s:%(message)'))
+    else:
+        handler.setFormatter(format_class)
+        handler.setLevel(logging.INFO)
 
 def which_dist():
     dist_name = platform.dist()[0]
@@ -63,12 +104,9 @@ def link_file(original_filename, symlink_filename):
         os.unlink(symlink_path)
     os.symlink(original_path, symlink_path)
 
-LINKED_FILE = {
-        'vimrc':         r'~/.vimrc',
-        'vimrc.bundles': r'~/.vimrc.bundles',
-        'tmux.conf':     r'~/.tmux.conf'}
-
 def main():
+    setup_logging()
+    setup_console_handler(console_handler, options.get('--verbose'))
     log.info('>>> Start...')
     pkg_cmd = get_pkg_cmd()
     install_app(pkg_cmd, 'tmux')
