@@ -24,8 +24,9 @@ from .formatter import Formatter
 # Get commandline arguments
 parser = OptionParser()
 parser.add_option('-v', '--verbose', dest='verbose',
-                  help = 'Argument for logging output')
-(options, args) = parser.parse_args()
+                  help = 'make lots of noise [non-default]')
+(opts, args) = parser.parse_args()
+options = vars(opts)
 
 log = logging.getLogger(__name__)
 console_handler = logging.StreamHandler(sys.stderr)
