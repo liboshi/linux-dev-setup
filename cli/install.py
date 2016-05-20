@@ -20,6 +20,7 @@ import subprocess
 from optparse import OptionParser
 
 from .formatter import Formatter
+from .formatter import ConsoleWarningFormatter
 
 # Get commandline arguments
 parser = OptionParser()
