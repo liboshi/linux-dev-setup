@@ -55,7 +55,7 @@ def setup_console_handler(handler, verbose):
     if verbose:
         handler.setFormatter(format_closs('%(name)s.%(funcName)s:%(message)'))
     else:
-        handler.setFormatter(format_class)
+        handler.setFormatter(format_class())
         handler.setLevel(logging.INFO)
 
 def which_dist():
