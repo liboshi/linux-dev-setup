@@ -13,5 +13,8 @@
 * Run the install.py
   `python install.py`
 
+## Notes
+* Testing done on Ubuntu.
+
 ## Further development
 * Install or update git, vim automatically.
