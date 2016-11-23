@@ -114,6 +114,7 @@ def main():
     pkg_cmd = get_pkg_cmd()
     install_app(pkg_cmd, 'tmux')
     install_app(pkg_cmd, 'cmake')
+    install_app(pke_cmd, 'build-essential')
     install_github_bundle('VundleVim', 'Vundle.vim')
     for k, v in LINKED_FILE.iteritems():
         link_file(k, v)
