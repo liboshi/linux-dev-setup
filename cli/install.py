@@ -4,6 +4,7 @@
 TODO:
     o Add one process to clone linux-dev-setup, this is just used by myself.
     o FIXED: Install vim plugins after install Vundle.vim automatically.
+    o FIXED: Install build-essential in order to build YouCompleteMe.
 '''
 
 from __future__ import absolute_import
@@ -113,6 +114,7 @@ def main():
     log.info('>>> Start...')
     pkg_cmd = get_pkg_cmd()
     install_app(pkg_cmd, 'tmux')
+    install_app(pke_cmd, 'git')
     install_app(pkg_cmd, 'cmake')
     install_app(pke_cmd, 'build-essential')
     install_github_bundle('VundleVim', 'Vundle.vim')
