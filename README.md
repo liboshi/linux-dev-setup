@@ -19,5 +19,5 @@
 * Testing done on Ubuntu.
 
 ## Further development
-* Install or update git, vim automatically.
+* --Install or update git, vim automatically.--
 * Add python setup.py for python module requirements.

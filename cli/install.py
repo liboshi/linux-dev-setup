@@ -113,6 +113,7 @@ def main():
     setup_console_handler(console_handler, options.get('--verbose'))
     log.info('>>> Start...')
     pkg_cmd = get_pkg_cmd()
+    install_app(pkg_cmd, 'vim')
     install_app(pkg_cmd, 'tmux')
     install_app(pke_cmd, 'git')
     install_app(pkg_cmd, 'cmake')
