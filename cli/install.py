@@ -18,6 +18,9 @@ import platform
 import logging
 import subprocess
 
+# Import self modules
+from cli import config
+
 from optparse import OptionParser
 
 from .formatter import Formatter
@@ -32,13 +35,6 @@ options = vars(opts)
 
 log = logging.getLogger(__name__)
 console_handler = logging.StreamHandler(sys.stderr)
-
-# Configuration files definitions
-LINKED_FILE = {
-        'vimrc':           r'~/.vimrc',
-        'vimrc.bundles':   r'~/.vimrc.bundles',
-        'tmux.conf':       r'~/.tmux.conf',
-        'tmux.conf.local': r'~/.tmux.conf.local'}
 
 def setup_logging():
     root_logger = logging.getLogger()
@@ -112,6 +108,7 @@ def main():
     setup_logging()
     setup_console_handler(console_handler, options.get('--verbose'))
     log.info('>>> Start...')
+    sys.exit()
     pkg_cmd = get_pkg_cmd()
     install_app(pkg_cmd, 'vim')
     install_app(pkg_cmd, 'tmux')
@@ -119,7 +116,7 @@ def main():
     install_app(pkg_cmd, 'cmake')
     install_app(pke_cmd, 'build-essential')
     install_github_bundle('VundleVim', 'Vundle.vim')
-    for k, v in LINKED_FILE.iteritems():
+    for k, v in config.LINKED_FILE.iteritems():
         link_file(k, v)
     # Install vim plugins
     install_vim_plugins()

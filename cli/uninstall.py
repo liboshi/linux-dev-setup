@@ -36,3 +36,6 @@ def unlink_file(symlink_filename):
 
 def uninstall():
     setup_logging()
+    log.info('>>> Uninstall start...')
+    for k, v in config.LINKED_FILE.iteritems():
+        unlink_file(v)
