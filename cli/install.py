@@ -108,7 +108,6 @@ def main():
     setup_logging()
     setup_console_handler(console_handler, options.get('--verbose'))
     log.info('>>> Start...')
-    sys.exit()
     pkg_cmd = get_pkg_cmd()
     install_app(pkg_cmd, 'vim')
     install_app(pkg_cmd, 'tmux')
