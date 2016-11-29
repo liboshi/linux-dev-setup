@@ -34,8 +34,19 @@ def unlink_file(symlink_filename):
     if os.path.exists(symlink_path):
         os.unlink(symlink_path)
 
+def remove_vim_plugin_folder():
+    vim_plugin_folder = os.path.expanduser(r'~/.vim/bundle')
+    if not os.path.exists(vim_plugin_folder):
+        log.info('>>> No need to remove vim folder...')
+    else:
+        os.removedirs(vim_plugin_folder)
+
 def uninstall():
     setup_logging()
     log.info('>>> Uninstall start...')
+    log.info('>>> Unlink configuration files...')
     for k, v in config.LINKED_FILE.iteritems():
         unlink_file(v)
+    log.info('>>> Remove vim folder...')
+    remove_vim_plugin_folder()
+    log.info('>>> Remove the apps installed by this tool...')
