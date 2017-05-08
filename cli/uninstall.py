@@ -13,6 +13,10 @@ import sys
 import logging
 import subprocess
 
+# Import self modules
+from .utils import which_dist
+from .utils import get_pkg_cmd
+
 log = logging.getLogger(__name__)
 console_handler = logging.StreamHandler(sys.stderr)
 
@@ -44,6 +48,7 @@ def remove_vim_plugin_folder():
 def uninstall():
     setup_logging()
     log.info('>>> Uninstall start...')
+    pkg_cmd = get_pkg_cmd()
     log.info('>>> Unlink configuration files...')
     for k, v in config.LINKED_FILE.iteritems():
         unlink_file(v)

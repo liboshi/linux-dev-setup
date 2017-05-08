@@ -25,6 +25,8 @@ from optparse import OptionParser
 
 from .formatter import Formatter
 from .formatter import ConsoleWarningFormatter
+from .utils import which_dist
+from .utils import get_pkg_cmd
 
 # Get commandline arguments
 parser = OptionParser()
@@ -55,20 +57,6 @@ def setup_console_handler(handler, verbose):
     else:
         handler.setFormatter(format_class())
         handler.setLevel(logging.INFO)
-
-def which_dist():
-    dist_name = platform.dist()[0]
-    if re.search(r'Ubuntu|debian', dist_name):
-        return 'debian'
-    else:
-        return 'redhat'
-
-def get_pkg_cmd():
-    pkg_cmd = 'apt-get'
-    dist_name = which_dist()
-    if dist_name != 'debian':
-        pkg_cmd = 'yum'
-    return pkg_cmd
 
 def make_vim_plugin_folder():
     vim_plugin_folder = os.path.expanduser(r'~/.vim/bundle')
