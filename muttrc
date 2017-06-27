@@ -1,0 +1,23 @@
+
+set from = "boush.d.li@gmail.com"
+set realname = "Boush Li"
+set use_from = yes
+
+set imap_user = "boush.d.li@gmail.com"
+set imap_pass = "lbs19860315"
+
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+
+unset imap_passive
+
+set header_cache = ~/.mutt/email/headers
+set message_cachedir = ~/.mutt/email/bodies
+
+#set certificate_file = /etc/ssl/certs/ca-certificates.crt
+
+set smtp_url = "smtps://boush.d.li@gmail.com@smtp.gmail.com:465/"
+set smtp_pass = "lbs19860315"
+
+set editor=vim
