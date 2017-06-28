@@ -14,7 +14,6 @@ from __future__ import unicode_literals
 import os
 import re
 import sys
-import platform
 import logging
 import subprocess
 
@@ -100,9 +99,9 @@ def main():
     install_app(pkg_cmd, 'vim')
     install_app(pkg_cmd, 'ctags')
     install_app(pkg_cmd, 'tmux')
-    install_app(pke_cmd, 'git')
+    install_app(pkg_cmd, 'git')
     install_app(pkg_cmd, 'cmake')
-    install_app(pke_cmd, 'build-essential')
+    install_app(pkg_cmd, 'build-essential')
     install_github_bundle('VundleVim', 'Vundle.vim')
     for k, v in config.LINKED_FILE.iteritems():
         link_file(k, v)

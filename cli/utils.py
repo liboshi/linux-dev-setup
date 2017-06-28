@@ -4,9 +4,12 @@
 This file is used for utilities.
 '''
 
-from __future__ import obsolute_import
+from __future__ import absolute_import
 from __future__ import print_function
 from __future__ import unicode_literals
+
+import re
+import platform
 
 def which_dist():
     dist_name = platform.dist()[0]
