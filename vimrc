@@ -23,7 +23,6 @@ endif
 
 call vundle#end()
 
-set colorcolumn=80
 set autoindent
 set autoread
 set backspace=2
