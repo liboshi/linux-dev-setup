@@ -102,6 +102,7 @@ def main():
     install_app(pkg_cmd, 'git')
     install_app(pkg_cmd, 'cmake')
     install_app(pkg_cmd, 'build-essential')
+    install_app(pkg_cmd, 'silversearcher-ag')
     install_github_bundle('VundleVim', 'Vundle.vim')
     for k, v in config.LINKED_FILE.iteritems():
         link_file(k, v)
