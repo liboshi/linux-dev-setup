@@ -16,10 +16,12 @@
 
 * Run following command
 
+  `cd linux-dev-setup`
+
   `sudo apt install python-setuptools`
 
    `sudo python setup.py install`
- 
+
    `linux-dev-setup`
 
 ## Notes
