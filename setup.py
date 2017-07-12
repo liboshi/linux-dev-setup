@@ -31,6 +31,13 @@ install_requires = [
     'six >= 1.3.0, < 2',
 ]
 
+tests_require = [
+    'pytest'
+]
+
+extras_require = {
+}
+
 setup(
     name = 'linux-dev-setup',
     version = find_version('__init__.py'),
