@@ -3,6 +3,7 @@
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
-from .install import main
+from .install import install
 
-main()
+def main():
+    install()

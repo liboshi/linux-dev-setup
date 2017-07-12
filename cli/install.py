@@ -91,7 +91,7 @@ def link_file(original_filename, symlink_filename):
         os.unlink(symlink_path)
     os.symlink(original_path, symlink_path)
 
-def main():
+def install():
     setup_logging()
     setup_console_handler(console_handler, options.get('--verbose'))
     log.info('>>> Start...')

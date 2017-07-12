@@ -53,7 +53,7 @@ setup(
     tests_require = tests_require,
     entry_points='''
     [console_scripts]
-    linux-dev-setup=cli.__main__.main
+    linux-dev-setup=cli.main:main
     ''',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
