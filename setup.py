@@ -41,7 +41,7 @@ extras_require = {
 
 setup(
     name = 'linux-dev-setup',
-    version = find_version('__init__.py'),
+    version = find_version('cli/__init__.py'),
     description = 'Linux development environment setup',
     url = 'https://github.com/liboshi/linux-dev-setup',
     author = 'Boush Li',
