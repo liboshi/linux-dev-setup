@@ -14,9 +14,11 @@
   `git clone https://github.com/liboshi/linux-dev-setup.git`
 * Run following command
 
-  `sudo apt install python-setuptools
-   sudo python setup.py install
-   linux-dev-setup`
+  `sudo apt install python-setuptools`
+
+   `sudo python setup.py install`
+ 
+   `linux-dev-setup`
 
 ## Notes
 * Testing done on Ubuntu.
