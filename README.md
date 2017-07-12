@@ -4,14 +4,16 @@
 
 ## Requirement
 * Please make sure git has been installed.
-* Please make sure vim has been installed.
+* ~~Please make sure vim has been installed.~~
 * Please make sure vim is 7.3.598+, the reason is that Plugin YouCompleteMe's requirements.
 * ~~Please additional python moudle texttable~~
   ~~`pip install texttable`~~
 
 ## Installation
 * Clone this project to your local machine.
+
   `git clone https://github.com/liboshi/linux-dev-setup.git`
+
 * Run following command
 
   `sudo apt install python-setuptools`
