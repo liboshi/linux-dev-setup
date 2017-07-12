@@ -37,4 +37,15 @@ setup(
     install_requires = install_requires,
     extras_require = extras_require,
     tests_require = tests_require,
+    entry_points='''
+    [console_scripts]
+    linux-dev-setup=cli.__main__.main
+    ''',
+    classifiers=[
+        'Development Status :: 5 - Production/Stable',
+        'Environment :: Console',
+        'Intended Audience :: Developers',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.7',
+    ]
 )
