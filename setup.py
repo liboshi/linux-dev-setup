@@ -29,6 +29,7 @@ def find_version(*file_paths):
 
 install_requires = [
     'six >= 1.3.0, < 2',
+    'texttable >= 0.8.1, < 0.9',
 ]
 
 tests_require = [
