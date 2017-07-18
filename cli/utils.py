@@ -19,7 +19,7 @@ def which_dist():
         return 'redhat'
 
 def get_pkg_cmd():
-    pkg_cmd = 'apt'
+    pkg_cmd = 'apt-get'
     dist_name = which_dist()
     if dist_name != 'debian':
         pkg_cmd = 'yum'

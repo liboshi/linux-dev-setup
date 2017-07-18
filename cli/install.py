@@ -77,7 +77,7 @@ def install_github_bundle(user, package):
 
 def install_app(pkg_cmd, app_name):
     log.info('>>> Install {0}'.format(app_name))
-    subprocess.call(r'sudo {0} install -y {1}'.format(pkg_cmd, app_name),
+    subprocess.call(r'sudo {0} install -y {1} >/dev/null'.format(pkg_cmd, app_name),
                     shell = True)
 
 def install_vim_plugins():
@@ -101,6 +101,8 @@ def install():
     install_app(pkg_cmd, 'tmux')
     install_app(pkg_cmd, 'git')
     install_app(pkg_cmd, 'cmake')
+    install_app(pkg_cmd, 'gdb')
+    install_app(pkg_cmd, 'clang')
     install_app(pkg_cmd, 'build-essential')
     install_app(pkg_cmd, 'silversearcher-ag')
     install_github_bundle('VundleVim', 'Vundle.vim')
