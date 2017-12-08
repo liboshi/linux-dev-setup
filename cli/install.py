@@ -96,17 +96,11 @@ def install():
     setup_console_handler(console_handler, options.get('--verbose'))
     log.info('>>> Start...')
     pkg_cmd = get_pkg_cmd()
-    install_app(pkg_cmd, 'vim')
-    install_app(pkg_cmd, 'ctags')
-    install_app(pkg_cmd, 'tmux')
-    install_app(pkg_cmd, 'git')
-    install_app(pkg_cmd, 'cmake')
-    install_app(pkg_cmd, 'gdb')
-    install_app(pkg_cmd, 'clang')
-    install_app(pkg_cmd, 'build-essential')
-    install_app(pkg_cmd, 'silversearcher-ag')
-    install_github_bundle('VundleVim', 'Vundle.vim')
+    # Install applications
+    for app in config.INSTALL_APPS:
+        install_app(pkg_cmd, app)
     for k, v in config.LINKED_FILE.iteritems():
         link_file(k, v)
     # Install vim plugins
+    install_github_bundle('VundleVim', 'Vundle.vim')
     install_vim_plugins()
