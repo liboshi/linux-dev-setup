@@ -23,5 +23,8 @@ fi
 
 # setting for Boush
 export PATH='/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin':"$PATH"
-export GOPATH="/home/boshil/go"
+export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin":"$PATH"
+
+# setting for sdkman
+source "$HOME/.sdkman/bin/sdkman-init.sh"
