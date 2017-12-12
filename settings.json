@@ -1,0 +1,7 @@
+{
+    "editor.fontSize": 15,
+    "editor.fontFamily": "Ubuntu Mono",
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "workbench.colorTheme": "Solarized Light"
+}
