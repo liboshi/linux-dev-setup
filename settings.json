@@ -1,7 +1,14 @@
 {
+    // Controls the font family
     "editor.fontSize": 15,
     "editor.fontFamily": "Ubuntu Mono",
+    // Indent
     "editor.tabSize": 4,
     "editor.insertSpaces": true,
-    "workbench.colorTheme": "Solarized Light"
+    // Theme
+    "workbench.colorTheme": "Solarized Light",
+    // Controls the editor rulers
+    "editor.rulers": [
+        80
+    ]
 }
