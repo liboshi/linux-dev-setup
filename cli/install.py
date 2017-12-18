@@ -19,6 +19,7 @@ import subprocess
 
 # Import self modules
 from cli import config
+from cli import colors
 
 from optparse import OptionParser
 
@@ -76,12 +77,12 @@ def install_github_bundle(user, package):
                         shell = True)
 
 def install_app(pkg_cmd, app_name):
-    log.info('>>> Install {0}'.format(app_name))
+    log.info('>>> Install {0}'.format(colors.blue(app_name)))
     subprocess.call(r'sudo {0} install -y {1} >/dev/null'.format(pkg_cmd, app_name),
                     shell = True)
 
 def install_vim_plugins():
-    log.info('>>> Install vim plugins')
+    log.info('>>> Install ' + colors.blue('vim plugins'))
     subprocess.call(r'vim +PluginInstall +qall', shell = True)
 
 def link_file(original_filename, symlink_filename):
@@ -94,7 +95,7 @@ def link_file(original_filename, symlink_filename):
 def install():
     setup_logging()
     setup_console_handler(console_handler, options.get('--verbose'))
-    log.info('>>> Start...')
+    log.info(colors.red('>>>') +' Start...')
     pkg_cmd = get_pkg_cmd()
     # Install applications
     for app in config.INSTALL_APPS:
