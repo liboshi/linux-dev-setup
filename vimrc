@@ -33,7 +33,7 @@ set ignorecase
 set incsearch
 set laststatus=2
 set list
-set listchars=tab:▸\ ,trail:ꔷ
+set listchars=tab:▸\ ,trail:●
 set number                                                   " show line numbers
 set ruler                                                    " show where you are
 set scrolloff=3                                              " show context above/below cursorline
