@@ -10,7 +10,12 @@ autocmd FileType c set ts=8 sw=8 sts=8
 autocmd FileType cpp set ts=8 sw=8 sts=8
 autocmd FileType python set ts=4 sw=4 sts=4
 autocmd FileType js set ts=2 sw=2 sts=2
+" setting for plugin ncm2
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
 filetype off
+" enable vim-rainbow
+let g:rainbow_active = 1
 
 " finding files
 set path+=**
@@ -32,7 +37,7 @@ call plug#end()
 " ensure ftdetect et al work by including this after the Vundle stuff
 filetype plugin indent on
 
-" set background=dark
+set background=dark
 set autoindent
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
 set backspace=2                                              " Fix broken backspace in some setups
@@ -57,13 +62,18 @@ set tabstop=4                                                " actual tabs occup
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmenu                                                 " show a navigable menu for tab completion
 set wildmode=longest,list,full
-set colorcolumn=101                                           " Line Limitation
+set colorcolumn=101                                          " Line Limitation
+set completeopt=noinsert,menuone,noselect                    " setting for ncm2
 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
-if exists('$TMUX')  " Support resizing in tmux
+if !has('nvim')
   set ttymouse=xterm2
 endif
+
+" if exists('$TMUX')  " Support resizing in tmux
+"   set ttymouse=xterm2
+" endif
 
 " keyboard shortcuts
 let mapleader = ','
@@ -155,3 +165,21 @@ if filereadable(expand("~/.vimrc.local"))
   " noremap! jj <ESC>
   source ~/.vimrc.local
 endif
+
+" Neovim specified setting
+let g:python3_host_prog="/usr/local/bin/python3"
+" Use <TAB> to select the popup menu:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+au User Ncm2Plugin call ncm2#register_source({
+            \ 'name' : 'css',
+            \ 'priority': 9,
+            \ 'subscope_enable': 1,
+            \ 'scope': ['css','scss'],
+            \ 'mark': 'css',
+            \ 'word_pattern': '[\w\-]+',
+            \ 'complete_pattern': ':\s*',
+            \ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
+            \ })
+" For Go
+let g:deoplete#enable_at_startup = 1
