@@ -31,7 +31,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/greplace.vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 Plug 'vim-scripts/Align'
@@ -42,6 +41,8 @@ Plug 'vim-python/python-syntax'
 Plug 'frazrepo/vim-rainbow'
 Plug 'vim/killersheep'
 Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-coc'
+Plug 'ncm2/ncm2-go'
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
