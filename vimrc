@@ -1,8 +1,10 @@
+set updatetime=100
 " don't bother with vi compatibility
 set nocompatible
+set hidden
 
 " enable syntax highlighting
-syntax enable
+syntax on
 
 " configure Vundle
 filetype on " without this vim emits a zero exit status, later, because of :ft off
@@ -10,8 +12,7 @@ autocmd FileType c set ts=8 sw=8 sts=8
 autocmd FileType cpp set ts=8 sw=8 sts=8
 autocmd FileType python set ts=4 sw=4 sts=4
 autocmd FileType js set ts=2 sw=2 sts=2
-" setting for plugin ncm2
-autocmd BufEnter * call ncm2#enable_for_buffer()
+autocmd FileType go set ts=4 sw=4 sts=4
 
 filetype off
 " enable vim-rainbow
@@ -36,6 +37,10 @@ call plug#end()
 
 " ensure ftdetect et al work by including this after the Vundle stuff
 filetype plugin indent on
+
+" for schemecolor
+" let g:onedark_termcolors=256
+" let g:onedark_contrast="high"
 
 set background=dark
 set autoindent
@@ -63,7 +68,6 @@ set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmenu                                                 " show a navigable menu for tab completion
 set wildmode=longest,list,full
 set colorcolumn=101                                          " Line Limitation
-set completeopt=noinsert,menuone,noselect                    " setting for ncm2
 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
@@ -129,14 +133,8 @@ endif
 autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
 " md is markdown
 autocmd BufRead,BufNewFile *.md set filetype=markdown
-autocmd BufRead,BufNewFile *.md set spell
-" extra rails.vim help
-autocmd User Rails silent! Rnavcommand decorator      app/decorators            -glob=**/* -suffix=_decorator.rb
-autocmd User Rails silent! Rnavcommand observer       app/observers             -glob=**/* -suffix=_observer.rb
-autocmd User Rails silent! Rnavcommand feature        features                  -glob=**/* -suffix=.feature
-autocmd User Rails silent! Rnavcommand job            app/jobs                  -glob=**/* -suffix=_job.rb
-autocmd User Rails silent! Rnavcommand mediator       app/mediators             -glob=**/* -suffix=_mediator.rb
-autocmd User Rails silent! Rnavcommand stepdefinition features/step_definitions -glob=**/* -suffix=_steps.rb
+" autocmd BufRead,BufNewFile *.md set spell
+
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
@@ -166,20 +164,32 @@ if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
-" Neovim specified setting
-let g:python3_host_prog="/usr/local/bin/python3"
-" Use <TAB> to select the popup menu:
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-au User Ncm2Plugin call ncm2#register_source({
-            \ 'name' : 'css',
-            \ 'priority': 9,
-            \ 'subscope_enable': 1,
-            \ 'scope': ['css','scss'],
-            \ 'mark': 'css',
-            \ 'word_pattern': '[\w\-]+',
-            \ 'complete_pattern': ':\s*',
-            \ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
-            \ })
-" For Go
 let g:deoplete#enable_at_startup = 1
+
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
+
+" For markdown
+let g:vim_markdown_folding_disabled = 1
+let g:snipMate = { 'snippet_version' : 1 }
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+    let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
