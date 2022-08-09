@@ -7,12 +7,16 @@ inoremap jj <ESC>
 "set hlsearch
 "nmap <leader>hl :let @/ = ""<CR>
 
+let g:codedark_transparent = 1
+let g:airline_theme = 'codedark'
+colorscheme codedark
+
 " gui settings
 if (&t_Co == 256 || has('gui_running'))
   if ($TERM_PROGRAM == 'iTerm.app')
-    colorscheme onedark
+    colorscheme codedark
   else
-    colorscheme desert
+    colorscheme codedark
   endif
 endif
 
