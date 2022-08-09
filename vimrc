@@ -5,11 +5,12 @@ set hidden
 
 " enable syntax highlighting
 syntax on
+set re=0
 
 " configure Vundle
 filetype on " without this vim emits a zero exit status, later, because of :ft off
 autocmd FileType c set ts=8 sw=8 sts=8
-autocmd FileType cpp set ts=8 sw=8 sts=8
+autocmd FileType cpp set ts=2 sw=2 sts=2
 autocmd FileType python set ts=4 sw=4 sts=4
 autocmd FileType js set ts=2 sw=2 sts=2
 autocmd FileType go set ts=4 sw=4 sts=4
@@ -55,7 +56,7 @@ set ignorecase                                               " case-insensitive 
 set incsearch                                                " search as you type
 set laststatus=2                                             " always show statusline
 set list                                                     " show trailing whitespace
-set listchars=tab:▸\ ,trail:●
+set listchars=tab:•\ ,trail:•
 set number                                                   " show line numbers
 set ruler                                                    " show where you are
 set scrolloff=3                                              " show context above/below cursorline
@@ -96,6 +97,7 @@ nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 nnoremap <leader>] :TagbarToggle<CR>
 nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 nnoremap <leader>g :GitGutterToggle<CR>
+nnoremap <leader>D :term<CR>
 noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " in case you forgot to sudo
@@ -173,23 +175,3 @@ set encoding=utf-8
 " For markdown
 let g:vim_markdown_folding_disabled = 1
 let g:snipMate = { 'snippet_version' : 1 }
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-    let col = col('.') - 1
-      return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
