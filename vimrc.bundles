@@ -32,8 +32,6 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/greplace.vim'
 Plug 'vim-scripts/Align'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'vim-python/python-syntax'
 Plug 'frazrepo/vim-rainbow'
@@ -43,3 +41,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'rust-lang/rust.vim'
+Plug 'rking/ag.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'psf/black', { 'branch': 'stable' }
