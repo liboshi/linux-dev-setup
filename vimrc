@@ -58,6 +58,7 @@ set laststatus=2                                             " always show statu
 set list                                                     " show trailing whitespace
 set listchars=tab:•\ ,trail:•
 set number                                                   " show line numbers
+set relativenumber                                           " show relative line numbers
 set ruler                                                    " show where you are
 set scrolloff=3                                              " show context above/below cursorline
 set shiftwidth=2                                             " normal mode indentation commands use 2 spaces
@@ -81,7 +82,9 @@ endif
 " endif
 
 " keyboard shortcuts
-let mapleader = ','
+" let mapleader = ','
+nnoremap <Space> <Nop>
+let mapleader = ' '
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
@@ -91,13 +94,15 @@ noremap <leader>y "*yy
 noremap <leader>p "*p
 nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>d :NERDTreeToggle<CR>
-nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap <leader>F :NERDTreeFind<CR>
 nnoremap <leader>t :CtrlP<CR>
 nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 nnoremap <leader>] :TagbarToggle<CR>
-nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
+" nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 nnoremap <leader>g :GitGutterToggle<CR>
 nnoremap <leader>D :term<CR>
+nnoremap <leader>v :GF<CR>
+nnoremap <leader>m :GF?<CR>
 noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " in case you forgot to sudo
@@ -175,3 +180,4 @@ set encoding=utf-8
 " For markdown
 let g:vim_markdown_folding_disabled = 1
 let g:snipMate = { 'snippet_version' : 1 }
+
