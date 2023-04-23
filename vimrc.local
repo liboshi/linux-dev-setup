@@ -8,13 +8,15 @@ inoremap jj <ESC>
 "nmap <leader>hl :let @/ = ""<CR>
 
 let g:codedark_transparent = 1
-let g:airline_theme = 'codedark'
-colorscheme codedark
+let g:airlin_theme = 'codedark'
+let g:onedark_termcolors=256
 
 " gui settings
 if (&t_Co == 256 || has('gui_running'))
   if ($TERM_PROGRAM == 'iTerm.app')
     colorscheme codedark
+    let g:codedark_transparent = 1
+    let g:airlin_theme = 'codedark'
   else
     colorscheme codedark
   endif
@@ -41,9 +43,24 @@ let g:ag_working_path_mode="r"
 
 " for nerdtree
 let g:NERDTreeWinSize = 45
+let g:NERDTreeWinPos = "left"
 
-" for colorcolumn
-hi colorcolumn ctermbg=0 guibg=lightgray
+hi ColorColumn ctermbg=0 guibg=lightgrey
+
+" for tagbar
+let g:tagbar_type_typescript = {
+    \ 'ctagstype': 'typescript',
+  \ 'kinds': [
+      \ 'c:classes',
+    \ 'n:modules',
+    \ 'f:functions',
+    \ 'v:variables',
+    \ 'v:varlambdas',
+    \ 'm:members',
+    \ 'i:interfaces',
+    \ 'e:enums',
+  \ ]
+  \ }
 
 " for coc
 " Some servers have issues with backup files, see #649.
@@ -195,3 +212,28 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+" Setting for python black (formatter)
+augroup black_on_save
+  autocmd!
+  autocmd BufWritePre *.py Black
+augroup end
+
+" Setting for go
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+au BufWritePre *.go :call CocAction('format')
+
+" Setting for prettier
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
+
+" Setting for vim-markdown-composer
+let g:markdown_composer_autostart = 0
+
+" Setting for git blamer
+let g:blamer_enabled = 0
+let g:blamer_delay = 500
+let g:blamer_show_in_insert_modes = 0
+hi Blamer term=standout ctermfg=240 guifg=#D3D3D3
+
+" Setting for rust
+let g:rustfmt_autosave = 1
