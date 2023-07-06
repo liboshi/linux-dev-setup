@@ -1,0 +1,4 @@
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+" Plug 'psf/black', { 'branch': 'stable' }
+Plug 'nvie/vim-flake8'
