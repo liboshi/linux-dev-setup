@@ -73,6 +73,7 @@ ZSH_THEME="boush"
 plugins=(
   git
   zsh-autosuggestions
+  virtualenv
 )
 
 source $ZSH/oh-my-zsh.sh
